@@ -1,17 +1,54 @@
 {
-  "name": "nuxtjs",
+  "name": "@tsed/tsed-example-vercel",
   "version": "1.0.0",
-  "description": "My astonishing Nuxt App",
-  "author": "msweeneydev",
-  "private": true,
+  "description": "",
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt generate",
-    "start": "nuxt start"
+    "build": "yarn run tsc",
+    "tsc": "tsc --project tsconfig.compile.json",
+    "tsc:w": "tsc --project tsconfig.json -w",
+    "start": "tsnd --inspect --ignore-watch node_modules --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
+    "start:emulate": "tsnd --inspect --ignore-watch node_modules --respawn --transpile-only -r tsconfig-paths/register src/emulate.ts",
+    "start:prod": "cross-env NODE_ENV=production node dist/index.js",
+    "deploy": "npx vercel --prod"
   },
   "dependencies": {
-    "core-js": "^3.15.0",
-    "nuxt": "^2.15.7"
+    "@tsed/ajv": "6.91.0",
+    "@tsed/common": "6.91.0",
+    "@tsed/core": "6.91.0",
+    "@tsed/di": "6.91.0",
+    "@tsed/exceptions": "6.91.0",
+    "@tsed/json-mapper": "6.91.0",
+    "@tsed/platform-express": "6.91.0",
+    "@tsed/platform-views": "6.91.0",
+    "@tsed/schema": "6.91.0",
+    "@tsed/swagger": "6.91.0",
+    "ajv": "^8.8.1",
+    "ejs": "^3.1.6",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/method-override": "^0.0.32",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^16.11.8",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.2"
+  },
+  "tsed": {
+    "packageManager": "yarn",
+    "convention": "default",
+    "architecture": "default"
+  }
 }
